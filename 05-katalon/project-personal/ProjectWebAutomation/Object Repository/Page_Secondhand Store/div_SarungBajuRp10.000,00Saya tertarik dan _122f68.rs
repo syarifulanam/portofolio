@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>div_SarungBajuRp10.000,00Saya tertarik dan _122f68</name>
+   <tag></tag>
+   <elementGuidId>fcec9d9b-2a9f-412f-9b02-00e26aaf3514</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>div.col-md-4</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='root']/div/div/div/div[3]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>div</value>
+      <webElementGuid>834c8ac4-6a62-4548-83fb-369d1ba54b7e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>col-md-4</value>
+      <webElementGuid>fc4aaca0-ebc1-496c-83b7-72ab58a21265</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>SarungBajuRp 10.000,00Saya tertarik dan ingin negoFikri Rahmat NurhidayatYogyakarta</value>
+      <webElementGuid>e4b37e54-d93e-4607-9ded-347bf2219e0d</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;root&quot;)/div[1]/div[@class=&quot;container pb-5&quot;]/div[@class=&quot;row&quot;]/div[@class=&quot;col-md-4&quot;]</value>
+      <webElementGuid>7d0f70fe-8f5c-44cd-9737-3c5312dd2132</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='root']/div/div/div/div[3]</value>
+      <webElementGuid>c02fa729-c2f1-4f26-9660-3e8285a717cd</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Deskripsi'])[1]/following::div[1]</value>
+      <webElementGuid>0f6492a0-b7e0-4c2a-827e-ad510a0c733b</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Next'])[1]/following::div[3]</value>
+      <webElementGuid>db8a0926-d9ba-46ba-84b0-91efef7497ef</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//div[3]</value>
+      <webElementGuid>fcd2d3a6-a721-4c9f-912a-35bfae5c2f00</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//div[(text() = 'SarungBajuRp 10.000,00Saya tertarik dan ingin negoFikri Rahmat NurhidayatYogyakarta' or . = 'SarungBajuRp 10.000,00Saya tertarik dan ingin negoFikri Rahmat NurhidayatYogyakarta')]</value>
+      <webElementGuid>0eac5444-8a5f-4a4e-92c2-bbe4b6dbe1b2</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

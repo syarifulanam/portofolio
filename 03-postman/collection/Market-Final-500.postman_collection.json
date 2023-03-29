@@ -1,0 +1,672 @@
+{
+	"info": {
+		"_postman_id": "ccf6cf3c-bfa7-473a-989a-bd74cf0ed406",
+		"name": "Market-Final-500",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24654466"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// can change 7 to 2 for longer result\r",
+									"let random = (Math.random() +1).toString(36).substring(7);\r",
+									"\r",
+									"// simpan ke variable local hanya di pre-request-script\r",
+									"var email_suffix = \"qa_testing\" + random + \"@gmailtester.com\";\r",
+									"\r",
+									"// simpan ke variable global agar postman bisa baca\r",
+									"pm.globals.set(\"email_random\", email_suffix);\r",
+									"pm.environment.get(\"variable_key\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// ambil semua data response\r",
+									"var response = pm.response.json();\r",
+									"\r",
+									"// ambil response code\r",
+									"var response_code = pm.response.code;\r",
+									"\r",
+									"// taruh variabel email\r",
+									"var email_registration = response.email;\r",
+									"\r",
+									"// taruh variabel global -> variabel yang bisa diakses project\r",
+									"pm.globals.set(\"email_from_register\", email_registration);\r",
+									"\r",
+									"// assertion blok\r",
+									"pm.test(\"Status code is 201: success to register\", function () {\r",
+									"     pm.expect(response_code).to.be.oneOf([201]);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "full_name",
+									"value": "syarifulQA",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "{{email_random}}",
+									"description": "{{email_random}} , {{$randomEmail}} -> fitur email generator postman",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "123456789",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "phone_number",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "petukangan",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "bread.jpg",
+									"disabled": true
+								},
+								{
+									"key": "city",
+									"value": "jakarta",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{market-final-project}}/auth/register",
+							"host": [
+								"{{market-final-project}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.globals.get(\"email_from_register\");\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// ambil response data\r",
+									"var data = pm.response.json();\r",
+									"var response_code = pm.response.code;\r",
+									"\r",
+									"// ambil access_token\r",
+									"var access_token = data.access_token;\r",
+									"\r",
+									"//set accsess_token jadi global variabel\r",
+									"pm.globals.set(\"acces_token_from_login\", access_token);\r",
+									"\r",
+									"// assertion blok\r",
+									"pm.test(\"Status code is 201: success to login\", function () {\r",
+									"     pm.expect(response_code).to.be.oneOf([201]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"password\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{market-final-project}}/auth/login",
+							"host": [
+								"{{market-final-project}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SellerProduct",
+			"item": [
+				{
+					"name": "CreateSellerProduct",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// bikin kombinasi angka dan huruf\r",
+									"let r = (Math.random() +1).toString(36).substring(7);\r",
+									"\r",
+									"// dibentuk namanya\r",
+									"var product_name = \"product_testing\" + r;\r",
+									"\r",
+									"//set product_name jadi global variabel\r",
+									"pm.globals.set(\"product_name\", product_name);\r",
+									"\r",
+									"// ambil token\r",
+									"pm.globals.get(\"acces_token_from_login\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json();\r",
+									"var response_code = pm.response.code;\r",
+									"\r",
+									"var id = data.id;\r",
+									"pm.globals.set(\"product_id\", id);\r",
+									"\r",
+									"// assertion blok\r",
+									"pm.test(\"Status code is 201: success to create product\", function () {\r",
+									"     pm.expect(response_code).to.be.oneOf([201]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "access_token",
+								"value": "{{acces_token_from_login}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "{{product_name}}",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "dest",
+									"type": "text"
+								},
+								{
+									"key": "base_price",
+									"value": "{{$randomInt}}",
+									"type": "text"
+								},
+								{
+									"key": "category_ids",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "{{$randomCity}}",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "bread.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{market-final-project}}/seller/product",
+							"host": [
+								"{{market-final-project}}"
+							],
+							"path": [
+								"seller",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllSellerProduct",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// ambil token\r",
+									"pm.globals.get(\"acces_token_from_login\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response_code = pm.response.code;\r",
+									"\r",
+									"// assertion blok\r",
+									"pm.test(\"Status code is 200: success to seller product\", function () {\r",
+									"     pm.expect(response_code).to.be.oneOf([200]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access_token",
+								"value": "{{acces_token_from_login}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{market-final-project}}/seller/product",
+							"host": [
+								"{{market-final-project}}"
+							],
+							"path": [
+								"seller",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetSellerProductByID",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// ambil token dan product_id\r",
+									"pm.globals.get(\"acces_token_from_login\");\r",
+									"pm.globals.get(\"product_id\");\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response_code = pm.response.code;\r",
+									"\r",
+									"// assertion blok\r",
+									"pm.test(\"Status code is 200: success to seller product by id\", function () {\r",
+									"     pm.expect(response_code).to.be.oneOf([200]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access_token",
+								"value": "{{acces_token_from_login}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{market-final-project}}/seller/product/{{product_id}}",
+							"host": [
+								"{{market-final-project}}"
+							],
+							"path": [
+								"seller",
+								"product",
+								"{{product_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteSellerProductByID",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// ambil token dan product_id\r",
+									"pm.globals.get(\"acces_token_from_login\");\r",
+									"pm.globals.get(\"product_id\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response_code = pm.response.code;\r",
+									"\r",
+									"// assertion blok\r",
+									"pm.test(\"Status code is 200: success to seller product by id\", function () {\r",
+									"     pm.expect(response_code).to.be.oneOf([200]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "access_token",
+								"value": "{{acces_token_from_login}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{market-final-project}}/seller/product/{{product_id}}",
+							"host": [
+								"{{market-final-project}}"
+							],
+							"path": [
+								"seller",
+								"product",
+								"{{product_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BuyerProduct",
+			"item": [
+				{
+					"name": "GetBuyerProduct",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.set(\"buyer_product_id\", pm.response.json()[0].id);\r",
+									"\r",
+									"pm.test(\"Status code is 200: success GetBuyerProduct\", function () {\r",
+									"     pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{market-final-project}}/buyer/product?page=5&per_page=10",
+							"host": [
+								"{{market-final-project}}"
+							],
+							"path": [
+								"buyer",
+								"product"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "5"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								},
+								{
+									"key": "stastus",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "category_id",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetBuyerProductByID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200: success GetBuyerProduct\", function () {\r",
+									"     pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{market-final-project}}/buyer/product/{{buyer_product_id}}",
+							"host": [
+								"{{market-final-project}}"
+							],
+							"path": [
+								"buyer",
+								"product",
+								"{{buyer_product_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BuyerOrder",
+			"item": [
+				{
+					"name": "BuyerOrder",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "access_token",
+								"value": "{{acces_token_from_login}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"product_id\": {{buyer_product_id}},\r\n  \"bid_price\": 1000000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{market-final-project}}/buyer/order",
+							"host": [
+								"{{market-final-project}}"
+							],
+							"path": [
+								"buyer",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuyerOrder",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response_code = pm.response.code;\r",
+									"\r",
+									"// assertion blok\r",
+									"pm.test(\"Status code is 200: success to buyer order\", function () {\r",
+									"     pm.expect(response_code).to.be.oneOf([200]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "BuyerOrderByID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response_code = pm.response.code;\r",
+									"\r",
+									"// assertion blok\r",
+									"pm.test(\"Status code is 200: success to buyer product by ID\", function () {\r",
+									"     pm.expect(response_code).to.be.oneOf([200]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "BuyerOrderByID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response_code = pm.response.code;\r",
+									"\r",
+									"// assertion blok\r",
+									"pm.test(\"Status code is 200: success to buyer product by ID\", function () {\r",
+									"     pm.expect(response_code).to.be.oneOf([200]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

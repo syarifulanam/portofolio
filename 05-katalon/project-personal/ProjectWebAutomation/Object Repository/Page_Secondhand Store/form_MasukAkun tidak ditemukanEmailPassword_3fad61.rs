@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>form_MasukAkun tidak ditemukanEmailPassword_3fad61</name>
+   <tag></tag>
+   <elementGuidId>ad0012eb-4aa7-4e96-a37f-fbd31824fc51</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>form</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='root']/div/div/div[2]/form</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>form</value>
+      <webElementGuid>4b4bed53-92ad-423c-a7aa-928a7ab38a5f</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>MasukAkun tidak ditemukan×EmailPasswordMasukBelum punya akun? Daftar di sini</value>
+      <webElementGuid>3f565314-f8de-4169-a227-44949748572a</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;root&quot;)/div[@class=&quot;App&quot;]/div[@class=&quot;row&quot;]/div[@class=&quot;col-sm-6 form-register&quot;]/form[1]</value>
+      <webElementGuid>b848689b-a1ec-4e86-bee4-3de79e00c685</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='root']/div/div/div[2]/form</value>
+      <webElementGuid>26fc1c25-f860-42e5-bc89-3a598d9fbb8f</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='SecondHand.'])[1]/following::form[1]</value>
+      <webElementGuid>dc161bd2-b853-42ab-8951-674bcc1bde35</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//form</value>
+      <webElementGuid>74bc1c11-c2a2-4cdc-bb75-1a2a721f5fca</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//form[(text() = 'MasukAkun tidak ditemukan×EmailPasswordMasukBelum punya akun? Daftar di sini' or . = 'MasukAkun tidak ditemukan×EmailPasswordMasukBelum punya akun? Daftar di sini')]</value>
+      <webElementGuid>18106c7a-5bb9-4385-be35-a3b07c24c112</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>
